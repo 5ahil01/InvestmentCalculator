@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Header from "./Components/Header";
 import Inputs from "./Components/Inputs";
-import { Result } from "postcss";
 import Results from "./Components/Results";
 
 function App() {
@@ -21,11 +20,17 @@ function App() {
   }
 
   return (
-    <div className="px-32">
-      <Header />
-      <Inputs handleChange={handleChange} inputs={inputs} />
-      {!isInputValid && <p>Please enter a valid duration </p>}
-      {isInputValid && <Results inputs={inputs} />}
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-8">
+      <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-lg p-8">
+        <Header />
+        <Inputs handleChange={handleChange} inputs={inputs} />
+        {!isInputValid && (
+          <p className="text-red-500 text-center mt-4">
+            Please enter a valid duration
+          </p>
+        )}
+        {isInputValid && <Results inputs={inputs} />}
+      </div>
     </div>
   );
 }
